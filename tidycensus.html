@@ -1521,18 +1521,18 @@ div.tocify {
 <ul>
 <li><p>Install or update R to 3.6.1, and optionally update RStudio. <a href="https://jennhuck.github.io/workshops/install_update_R.html">Instructions are here</a>.</p></li>
 <li><p>Install packages tidyverse, tidycensus, tigris, sf, and censusapi: <code>install.packages(c(&quot;tidyverse&quot;, &quot; tidycensus&quot;, &quot; tigris&quot;, &quot;sf&quot;, &quot;censusapi&quot;))</code></p></li>
-<li><p><a href="https://github.com/jennhuck/workshops/blob/master/tidycensus.zip">Download this zipped folder</a>. (Look for the download button.) It contains one R script (tidycensus.R). Unzip it and put it somwehere you can locate it on your machine.</p></li>
+<li><p><a href="https://github.com/jennhuck/workshops/blob/master/tidycensus.zip">Download this zipped folder</a>. (Look for the download button.) It contains one R script (tidycensus.R). Unzip it and put it somewhere you can locate it on your machine.</p></li>
 </ul>
 </div>
 <div id="what-does-the-census-bureau-provide" class="section level2">
 <h2>What does the Census Bureau provide?</h2>
-<p>The Census Bureau is one of the best sources of data about the US’s people, places, and economy. They Census provides timely information at low levels of geography. The Census provides demographic and geographic data – both of which you need to understand in order to use effectively.</p>
+<p>The Census Bureau is one of the best sources of data about the US’s people, places, and economy. The Census provides timely information at low levels of geography. The Census provides demographic and geographic data – both of which you need to understand in order to use effectively.</p>
 <div id="demographic-data" class="section level3">
 <h3>Demographic data</h3>
 <p>The Census Bureau conducts over 100 censuses, surveys, and programs. The most popular are:</p>
 <ol style="list-style-type: decimal">
 <li><p><a href="https://www.census.gov/programs-surveys/acs/">The American Community Survey (ACS)</a>. The ACS provides detailed information about people (demographics) and housing. Topics like educational attainment, income, health insurance status, language, and detailed housing characteristics are all included. 3.5 million people are surveyed annually - about 1% of the population. The smallest geography available is the block group. There is a trade-off between size of geography (by population size), time interval of estimate (1-, 3-, 5-year), and standard error. Only geographies with a population of 65,000 or more will get 1-year estimates. All smaller geographies rely on 5-year estimates.</p></li>
-<li><p><a href="https://www.census.gov/programs-surveys/decennial-census.html">Decennial Census of Population and Housing</a>. This is the classic Census product used for population counts, which in turns affects legislative redistricting and federal funding. This counts every resident of the country on April 1 in years ending in zero. It also provides the most basic demographic characteristics: age, sex, and race.</p></li>
+<li><p><a href="https://www.census.gov/programs-surveys/decennial-census.html">Decennial Census of Population and Housing</a>. This is the classic Census product used for population counts, which in turn affects legislative redistricting and federal funding. This counts every resident of the country on April 1 in years ending in zero. It also provides the most basic demographic characteristics: age, sex, and race.</p></li>
 <li><p><a href="https://www.census.gov/programs-surveys/popest.html">Population Estimates Program (PEP)</a>. The Census also provides population estimates using decennial Census population data combined with estimates of births, deaths, and migration. Nation, states, and counties all receive annual population estimates.</p></li>
 </ol>
 <p>The Census provides a number of other important surveys, such as the Current Population Survey (CPS), Survey of Income and Program Participation (SIPP), Survey of Business Owners, Census of Governments, and many more.</p>
@@ -1626,7 +1626,7 @@ div.tocify {
 <p>Let’s take a look at our <a href="https://github.com/jennhuck/workshops/blob/master/tidycensus.zip">R script</a>. Along with tidyverse tools, we specifically will look at these packages:</p>
 <ul>
 <li>tidycensus: package for retrieving tidy census data for ACS and Decennial Census, plus easy mapping</li>
-<li>censusapi: package for retriving any of over 200 Census API endpoints</li>
+<li>censusapi: package for retrieving any of over 200 Census API endpoints</li>
 <li>some tigris and sf: tigris is integrated into tidycensus for mapping; sf handles the mapping</li>
 </ul>
 </div>
