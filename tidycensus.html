@@ -1598,6 +1598,7 @@ div.tocify {
 </ul>
 <p>You might be able to guess that the FIPS code for Charlottesville City (County) is 51540.</p>
 <p>You can find the FIPS code for state, county, census tract, and block group using an address look-up tool at the Census <a href="https://geocoding.geo.census.gov/">Geocoder</a> site. There is also a <a href="https://www.census.gov/data/developers/data-sets/Geocoding-services.html">Geocoder API</a>. It’s less obvious, but there are codes for the kinds of geographies as well.</p>
+<p><a href="https://api.census.gov/data/2017/acs/acs5/examples.html">Geography examples: ACS 5-year</a></p>
 </div>
 </div>
 <div id="r-packages" class="section level2">
@@ -1612,15 +1613,11 @@ div.tocify {
 <li><p><a href="https://cran.r-project.org/web/packages/ipumsr/index.html">ipumsr</a>. “An easy way to import census, survey and geographic data provided by ‘IPUMS’ into R plus tools to help use the associated metadata to make analysis easier.” You might want to use IPUMS if you need microdata, or data harmonized across space and time. You can go to <a href>IPUMS</a>, extract the data you need, and import the data to R with the ipumsr package. An API is currently in development.</p></li>
 </ol>
 </div>
-<div id="see-api-examples" class="section level2">
-<h2>SEE API EXAMPLES</h2>
-<p><a href="https://api.census.gov/data/2017/acs/acs5/examples.html" class="uri">https://api.census.gov/data/2017/acs/acs5/examples.html</a></p>
-</div>
 <div id="try-it-out" class="section level2">
 <h2>Try it out</h2>
-<p>Let’s take a look at our R script. Along with tidyverse, We will specifically look at these packages:</p>
+<p>Let’s take a look at our R script. Along with tidyverse tools, We will specifically look at these packages:</p>
 <ul>
-<li>tidycensus: package for retrieving tidy census data for ACS and Decennial Census</li>
+<li>tidycensus: package for retrieving tidy census data for ACS and Decennial Census, plus easy mapping</li>
 <li>censusapi: package for retriving any of over 200 Census API endpoints</li>
 <li>some tigris and sf: tigris is integrated into tidycensus for mapping; sf handles the mapping</li>
 </ul>
