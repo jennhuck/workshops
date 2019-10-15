@@ -1539,7 +1539,7 @@ div.tocify {
 </div>
 <div id="acs-public-use-microdata-sample-pums" class="section level3">
 <h3>ACS Public Use Microdata Sample (PUMS)</h3>
-<p>Note that the surveys listed above represent statistics about the population. Alternatively, the ACS Public Use Microdata Sample (PUMS) provides individual responses to the surveys. PUMS files for the 1-year ACS include 1% of the US population; the 5-year ACS includes 5%. Some modifications are made to the dataset to protect confidentiality. For example, very high incomes are top-coded or unusual birthplace or ancestries are grouped into broader categories. The most important thing to know about PUMS is that the geographic variables are limited. The lowest levels of geography include state, MSA, and PUMA. Public Use Microdata Areas (PUMAs) are special non-overlapping, contiguous units of geography that contain a minimum of 100,000 people. You are definitely not getting census tracts with PUMS files! The best source of PUMS data is the University of Minnesota’s <a href="https://usa.ipums.org/usa/">IPUMS</a> data archive: “IPUMS USA collects, preserves and harmonizes U.S. census microdata and provides easy access to this data with enhanced documentation. Data includes decennial censuses from 1790 to 2010 and American Community Surveys (ACS) from 2000 to the present.”</p>
+<p>Note that the surveys listed above represent statistics about the population. Alternatively, the ACS Public Use Microdata Sample (PUMS) provides individual responses to the surveys. PUMS files for the 1-year ACS include 1% of the US population; the 5-year ACS includes 5%. Some modifications are made to the dataset to protect confidentiality. For example, very high incomes are top-coded or unusual birthplace or ancestries are grouped into broader categories. The most important thing to know about PUMS is that the geographic variables are limited. The lowest levels of geography include state, MSA, and PUMA. Public Use Microdata Areas (PUMAs) are special non-overlapping, contiguous units of geography that contain a minimum of 100,000 people. Sorry, you can’t get census tracts with PUMS files! The best source of PUMS data is the University of Minnesota’s <a href="https://usa.ipums.org/usa/">IPUMS</a> data archive: “IPUMS USA collects, preserves and harmonizes U.S. census microdata and provides easy access to this data with enhanced documentation. Data includes decennial censuses from 1790 to 2010 and American Community Surveys (ACS) from 2000 to the present.”</p>
 </div>
 <div id="geographic-data" class="section level3">
 <h3>Geographic Data</h3>
@@ -1561,27 +1561,28 @@ div.tocify {
 <li>Population Estimates only go down to the county…</li>
 </ul>
 <p>You can access maps through the <a href="https://www.census.gov/programs-surveys/geography.html">Geography Program</a>.</p>
-<p>Here is the <a href="https://api.census.gov/data/2018/acs/acs1/geography.html">“Census Data API: FIPS Geographies in /data/2018/acs/acs1/geography”</a>.</p>
+<p>As an example of what is available, see <a href="https://api.census.gov/data/2018/acs/acs1/geography.html">“Census Data API: FIPS Geographies 2018 1-year ACS data”</a>.</p>
 </div>
 </div>
 <div id="getting-the-data" class="section level2">
 <h2>Getting the Data</h2>
-<p>From now on, we will mostly focus on retrieving demographic data via tables, rather than the working with maps. (PS. If you really want to work with maps, reach out to the library - we have GIS experts on staff who would be happy to do a consultation.)</p>
+<p>From now on, we will mostly focus on retrieving demographic data via tables, and focus less on geographies and mapping.</p>
 <ul>
 <li><p>These web-based/point-and-click options give you the ability to download a CSV file, and import them into the analysis software of your choice. These can be helpful when searching for table IDs. The learning curve is very low.</p>
 <ul>
-<li><p><a href="https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml">American FactFinder</a> or <a href="https://data.census.gov/cedsci/">data.census.gov</a>: web applications to search and navigate census data.</p></li>
+<li><p><a href="https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml">American FactFinder</a> or <a href="https://data.census.gov/cedsci/">data.census.gov</a>: web applications to search and navigate census data. FYI: American FactFinder is no longer being updated and will be replaced by data.census.gov.</p></li>
 <li><p><a href="http://proxy01.its.virginia.edu/login?url=http://www.socialexplorer.com/">Social Explorer</a>: Social Explorer, brought to you by UVA Library, is much easier to use than the free Census products if you only need to pull a few tables.</p></li>
 </ul></li>
 <li><p>APIs for developers:</p>
 <ul>
-<li><a href="https://www.census.gov/developers/">Census APIs</a>, <a href="https://api.census.gov/data/key_signup.html">Get a Census API key</a></li>
+<li><p><a href="https://www.census.gov/developers/">Census APIs</a></p></li>
+<li><p><a href="https://api.census.gov/data/key_signup.html">Get a Census API key</a></p></li>
 </ul></li>
 </ul>
 </div>
 <div id="table-ids-and-fips-codes-explained" class="section level2">
 <h2>Table IDs and FIPS Codes Explained</h2>
-<p>In order to effectively work with Census data, it’s best to get familiar with FIPS Codes and Table IDs. They are the keys to getting to tabular data.</p>
+<p>In order to effectively work with Census data, it’s best to get familiar with Table IDs and FIPS Codes. They are the keys to getting to tabular data.</p>
 <div id="acs-table-ids" class="section level3">
 <h3>ACS Table IDs</h3>
 <p>There are 5 <a href="https://www.census.gov/programs-surveys/acs/guidance/which-data-tool/table-ids-explained.html">elements within table IDs</a>. Note that the first letter(s) refers to Table Type:</p>
@@ -1591,9 +1592,10 @@ div.tocify {
 <li><p>DP: data profiles</p></li>
 <li><p>S: Subject table</p></li>
 </ul>
-<p>There are other, less commonly used types as well. Only the 4 types listed above will work in Tidycensus.</p>
-<p>One of the hard parts of working with Census data in R is figuring out which table (and table ID) you need. The Census has been publishing about 64,000 tables with each release of 5-year data.</p>
+<p>There are other, less commonly used types as well. Only the 4 types listed above will work in the <code>tidycensus</code> package.</p>
+<p>One of the hard parts of working with Census data in R is figuring out which table (and table ID) you need. The Census publishes about 64,000 tables with each release of 5-year data.</p>
 <p>The <a href="https://censusreporter.org/">Census Reporter</a> is very useful, especially when searching for table IDs. However, it only includes B (base) and C (collapsed) are available; it does not include the common S (subject) tables, or other less common tables.</p>
+<p>Here is an example of a Table ID for Family Poverty: B17010.</p>
 </div>
 <div id="fips-codes" class="section level3">
 <h3>FIPS Codes</h3>
@@ -1605,8 +1607,8 @@ div.tocify {
 <li>1: Block Group</li>
 </ul>
 <p>You might be able to guess that the FIPS code for Charlottesville City (County) is 51540.</p>
-<p>You can find the FIPS code for state, county, census tract, and block group using an address look-up tool at the Census <a href="https://geocoding.geo.census.gov/">Geocoder</a> site. There is also a <a href="https://www.census.gov/data/developers/data-sets/Geocoding-services.html">Geocoder API</a>. It’s less obvious, but there are codes for the kinds of geographies as well.</p>
-<p><a href="https://api.census.gov/data/2017/acs/acs5/examples.html">Geography examples: ACS 5-year</a></p>
+<p>You can find the FIPS code for state, county, census tract, and block group using an address look-up tool at the Census <a href="https://geocoding.geo.census.gov/">Geocoder</a> site. There is also a <a href="https://www.census.gov/data/developers/data-sets/Geocoding-services.html">Geocoder API</a>.</p>
+<p>Here is a list of <a href="https://api.census.gov/data/2017/acs/acs5/examples.html">geography examples for the 2017 5-year ACS</a>.</p>
 </div>
 </div>
 <div id="r-packages" class="section level2">
@@ -1634,7 +1636,8 @@ div.tocify {
 <h2>Even more packages to consider</h2>
 <p>These packages might be useful to your work with Census data:</p>
 <ul>
-<li><a href="https://r-spatial.github.io/mapview/">Mapview</a>: quickly and conveniently create interactive visualizations of spatial data. Good for quick (not presentation grade) mapping.</li>
+<li><p><a href="https://r-spatial.github.io/mapview/">Mapview</a>: quickly and conveniently create interactive visualizations of spatial data. Good for quick (not presentation grade) mapping.</p></li>
+<li><p><a href="Introduction%20to%20the%20RankingProject%20package">RankingProject</a>: “The package provides functions for plotting ranked tables of data side-by-side with their plots. The available visualizations include shaded columns plots, adjusted confidence intervals, and related plots intended for making correct inferences about one-to-many or many-to-many comparisons.” This package should be helpful for dealing with overlapping confidence intervals. Also see the related <a href="https://www.census.gov/data/academy/courses/ranking-project.html">Census Academy course</a>.</p></li>
 </ul>
 </div>
 <div id="learn-more" class="section level2">
