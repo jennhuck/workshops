@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -1405,6 +1404,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -1433,6 +1433,12 @@ summary {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -1511,14 +1517,14 @@ div.tocify {
 
 <h1 class="title toc-ignore">Install or Update R</h1>
 <h4 class="author">Jennifer Huck</h4>
-<h4 class="date">Fall 2019</h4>
+<h4 class="date">Spring 2020</h4>
 
 </div>
 
 
 <div id="in-advance-of-the-workshop" class="section level1">
 <h1>In advance of the workshop</h1>
-<p>To participate in the workshop, please bring a laptop with R and RStudio installed. We recommend that you have the latest version of R (3.6.1 “Action of the Toes”) and of the tidyverse package (1.2.1). Additionally, you need to have RStudio installed, but it is less crucial that you are using the most recent version (1.2.5001).</p>
+<p>To participate in the workshop, please bring a laptop with R and RStudio installed. We recommend that you have the latest version of R (3.6.2 “Dark and Stormy Night”) and of the tidyverse package (1.3.0). Additionally, you need to have RStudio installed, but it is less crucial that you are using the most recent version (1.2.5033).</p>
 <p>Follow these steps to make sure you have R properly installed in advance of the workshop.</p>
 <p>Do you already have R and RStudio installed?</p>
 <ul>
@@ -1534,13 +1540,13 @@ div.tocify {
 <p>Windows:</p>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://cloud.r-project.org/bin/windows/base/" class="uri">https://cloud.r-project.org/bin/windows/base/</a></li>
-<li>Click the “Download R 3.6.1 for Windows” link.</li>
+<li>Click the “Download R 3.6.2 for Windows” link.</li>
 <li>When the file finishes downloading, double-click to install. You should be able to just click “Next” to all dialogs to finish the installation.</li>
 </ol>
 <p>Mac:</p>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://cloud.r-project.org/bin/macosx/" class="uri">https://cloud.r-project.org/bin/macosx/</a></li>
-<li>Click the link “R-3.6.1.pkg”</li>
+<li>Click the link “R-3.6.2.pkg”</li>
 <li>When the file finishes downloading, double-click to install. You should be able to just click “Next” to all dialogs to finish the installation.</li>
 </ol>
 </div>
@@ -1551,8 +1557,8 @@ div.tocify {
 <li>Under “Installers for Supported Platforms” click the appropriate installer for your operating system:</li>
 </ol>
 <ul>
-<li>Windows: “RStudio 1.2.5001- Windows 10/8/7”</li>
-<li>Mac: “RStudio 1.2.5001 - Mac OS 10.12 (64-bit)”</li>
+<li>Windows: “RStudio 1.2.5033- Windows 10/8/7”</li>
+<li>Mac: “RStudio 1.2.5033 - Mac OS 10.12+”</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
 <li>When the file finishes downloading, double-click to install. You should be able to just click “Next” to all dialogs to finish the installation.</li>
@@ -1570,37 +1576,32 @@ div.tocify {
 <div id="verify-r-version" class="section level2">
 <h2>Verify R version</h2>
 <p>Open RStudio. At the top of the Console you will see session info. The first line tells you which version of R you are using. If RStudio is already open and you’re deep in a session, type <code>R.version.string</code> to print out the R version.</p>
-<p>Do you have R version 3.6.1 (“Action of the Toes”) installed?</p>
+<p>Do you have R version 3.6.2 (“Dark and Stormy Night”) installed?</p>
 <ul>
 <li>No - follow the instructions for <a href="#updateR">“Updating R”</a></li>
 <li>Yes - Great! Do you have tidyverse installed?
 <ul>
 <li>No or I don’t know - See <a href="#installtidyverse">“Installing tidyverse”</a></li>
-<li>Yes - Great! In Rstudio, go to Tools &gt; Check for Package Updates. If there’s an update available for tidyverse, install it.</li>
+<li>Yes - Great! In Rstudio, go to Tools &gt; Check for Package Updates. If there’s an update available for tidyverse, install it. You want tidyverse version 1.3.0.</li>
 </ul></li>
 </ul>
 </div>
 <div id="updateR" class="section level2">
 <h2>Updating R/RStudio/Tidyverse</h2>
 <p>Windows:</p>
-<p>To update R on Windows, try using the package <code>installr</code> (only for Windows).</p>
-<ol style="list-style-type: decimal">
-<li>Install and load <code>installr</code>: <code>install.packages(&quot;installr&quot;)</code> and <code>library(installr)</code></li>
-<li>Call <code>updateR()</code> function. This will start the updating process of your R installation by: “finding the latest R version, downloading it, running the installer, deleting the installation file, copy and updating old packages to the new R installation.”<br />
-</li>
-<li>From within RStudio, go to Help &gt; Check for Updates to install newer version of RStudio (if available, optional).</li>
-<li>Now that you have a fresh version of R, you will have to re-install packages. See above for <a href="#installtidyverse">“Installing tidyverse.”</a></li>
-</ol>
+<p>To update R on Windows, try using the package <code>installr</code> (only for Windows). This <a href="https://www.r-statistics.com/2015/06/a-step-by-step-screenshots-tutorial-for-upgrading-r-on-windows/">installr tutorial</a> is very helpful.</p>
+<p>Make sure you have tidyverse 1.3.0 installed.</p>
 <p>You are ready for the workshop!</p>
 <p>Mac:</p>
 <p>On Mac, you can simply download and install the newest version of R. When you restart RStudio, it will use the updated version of R.</p>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://cloud.r-project.org/bin/macosx/" class="uri">https://cloud.r-project.org/bin/macosx/</a></li>
-<li>Click the link “R-3.6.1.pkg”</li>
+<li>Click the link “R-3.6.2.pkg”</li>
 <li>When the file finishes downloading, double-click to install. You should be able to click “Next” to all dialogs to finish the installation.</li>
 <li>From within RStudio, go to Help &gt; Check for Updates to install newer version of RStudio (if available, optional).</li>
 <li>To update packages, go to Tools &gt; Check for Package Updates. If updates are available, select All (or just tidyverse), and click Install Updates.</li>
 </ol>
+<p>Make sure you have tidyverse 1.3.0 installed.</p>
 <p>You are ready for the workshop!</p>
 </div>
 </div>
