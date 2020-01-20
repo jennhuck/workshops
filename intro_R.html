@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -1405,6 +1404,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -1433,6 +1433,12 @@ summary {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -1511,7 +1517,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Intro to R</h1>
 <h4 class="author">Jennifer Huck</h4>
-<h4 class="date">Fall 2019</h4>
+<h4 class="date">Spring 2020</h4>
 
 </div>
 
@@ -1524,7 +1530,7 @@ div.tocify {
 <li>Before the first session, make sure you have installed or updated R, RStudio, and the tidyverse package. <a href="https://jennhuck.github.io/workshops/install_update_R.html">Instructions are here</a>.</li>
 <li>Download the data files and R scripts:
 <ul>
-<li><a href="https://github.com/jennhuck/workshops/raw/master/intro_R.zip">Download this zipped folder</a>. It contains one data file (albemarle_real_estate.csv) and one R script (Intro_to_R_Fall_2019.R).<br />
+<li><a href="https://github.com/jennhuck/workshops/raw/master/intro_R.zip">Download this zipped folder</a>. It contains one data file (albemarle_real_estate.csv) and one R script (intro_R.R).<br />
 </li>
 <li>Unzip it and put it somwehere you can locate it on your machine.</li>
 </ul></li>
@@ -1705,14 +1711,14 @@ File…Open File…Navigate to the folder where you saved the workshop files and
 ## system         x86_64, mingw32             
 ## status                                     
 ## major          3                           
-## minor          6.1                         
+## minor          6.2                         
 ## year           2019                        
-## month          07                          
-## day            05                          
-## svn rev        76782                       
+## month          12                          
+## day            12                          
+## svn rev        77560                       
 ## language       R                           
-## version.string R version 3.6.1 (2019-07-05)
-## nickname       Action of the Toes</code></pre>
+## version.string R version 3.6.2 (2019-12-12)
+## nickname       Dark and Stormy Night</code></pre>
 <p>After you load packages, sometimes you will see a Warning Message in red text below the any conflicts:</p>
 <p><code>Warning message: package &#39;tidyverse&#39; was built under R version [x.y.z]</code></p>
 <p>If you see a message like that, it is time to update R. Updating R means that you have to download and install R again. By default, your computer will keep your old version of R, and you can decide if you want to delete it or not. RStudio will automatically recognize the new version of R. When you install a new version of R, you have to re-install your packages.</p>
