@@ -1517,14 +1517,14 @@ div.tocify {
 
 <h1 class="title toc-ignore">Install or Update R</h1>
 <h4 class="author">Jennifer Huck</h4>
-<h4 class="date">Spring 2020</h4>
+<h4 class="date">Fall 2020</h4>
 
 </div>
 
 
 <div id="in-advance-of-the-workshop" class="section level1">
 <h1>In advance of the workshop</h1>
-<p>To participate in the workshop, please bring a laptop with R and RStudio installed. We recommend that you have the latest version of R (3.6.2 “Dark and Stormy Night”) and of the tidyverse package (1.3.0). Additionally, you need to have RStudio installed, but it is less crucial that you are using the most recent version (1.2.5033).</p>
+<p>To participate in the workshop, please bring a laptop with R and RStudio installed. We recommend that you have the latest version of R (4.0.2 “Taking Off Again”) and of the tidyverse package (1.3.0). Additionally, you need to have RStudio installed, but it is less crucial that you are using the most recent version.</p>
 <p>Follow these steps to make sure you have R properly installed in advance of the workshop.</p>
 <p>Do you already have R and RStudio installed?</p>
 <ul>
@@ -1540,13 +1540,13 @@ div.tocify {
 <p>Windows:</p>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://cloud.r-project.org/bin/windows/base/" class="uri">https://cloud.r-project.org/bin/windows/base/</a></li>
-<li>Click the “Download R 3.6.2 for Windows” link.</li>
+<li>Click the “Download R 4.0.2 for Windows” link.</li>
 <li>When the file finishes downloading, double-click to install. You should be able to just click “Next” to all dialogs to finish the installation.</li>
 </ol>
 <p>Mac:</p>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://cloud.r-project.org/bin/macosx/" class="uri">https://cloud.r-project.org/bin/macosx/</a></li>
-<li>Click the link “R-3.6.2.pkg”</li>
+<li>Click the link “R-4.0.2.pkg”</li>
 <li>When the file finishes downloading, double-click to install. You should be able to just click “Next” to all dialogs to finish the installation.</li>
 </ol>
 </div>
@@ -1557,8 +1557,8 @@ div.tocify {
 <li>Under “Installers for Supported Platforms” click the appropriate installer for your operating system:</li>
 </ol>
 <ul>
-<li>Windows: “RStudio 1.2.5033- Windows 10/8/7”</li>
-<li>Mac: “RStudio 1.2.5033 - Mac OS 10.12+”</li>
+<li>Windows: “RStudio 1.3.1073- Windows 10/8/7”</li>
+<li>Mac: “RStudio 1.3.1073 - Mac OS 10.13+”</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
 <li>When the file finishes downloading, double-click to install. You should be able to just click “Next” to all dialogs to finish the installation.</li>
@@ -1566,7 +1566,7 @@ div.tocify {
 </div>
 <div id="installtidyverse" class="section level2">
 <h2>Installing tidyverse</h2>
-<p>Open RStudio. Go to Tools (at the top) &gt; Install Packages. Enter <code>tidyverse</code>, then select Install.</p>
+<p>Open RStudio. Go to Tools (at the top)…Install Packages. Enter <code>tidyverse</code>, then select Install.</p>
 <p>You are ready for the workshop!</p>
 </div>
 </div>
@@ -1576,7 +1576,7 @@ div.tocify {
 <div id="verify-r-version" class="section level2">
 <h2>Verify R version</h2>
 <p>Open RStudio. At the top of the Console you will see session info. The first line tells you which version of R you are using. If RStudio is already open and you’re deep in a session, type <code>R.version.string</code> to print out the R version.</p>
-<p>Do you have R version 3.6.2 (“Dark and Stormy Night”) installed?</p>
+<p>Do you have R version 4.0.2 “Taking Off Again” installed?</p>
 <ul>
 <li>No - follow the instructions for <a href="#updateR">“Updating R”</a></li>
 <li>Yes - Great! Do you have tidyverse installed?
@@ -1596,10 +1596,10 @@ div.tocify {
 <p>On Mac, you can simply download and install the newest version of R. When you restart RStudio, it will use the updated version of R.</p>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://cloud.r-project.org/bin/macosx/" class="uri">https://cloud.r-project.org/bin/macosx/</a></li>
-<li>Click the link “R-3.6.2.pkg”</li>
+<li>Click the link “R-4.0.2.pkg”</li>
 <li>When the file finishes downloading, double-click to install. You should be able to click “Next” to all dialogs to finish the installation.</li>
-<li>From within RStudio, go to Help &gt; Check for Updates to install newer version of RStudio (if available, optional).</li>
-<li>To update packages, go to Tools &gt; Check for Package Updates. If updates are available, select All (or just tidyverse), and click Install Updates.</li>
+<li>From within RStudio, go to Help…Check for Updates to install newer version of RStudio (if available, optional).</li>
+<li>To update packages, go to Tools…Check for Package Updates. If updates are available, select All (or just tidyverse), and click Install Updates.</li>
 </ol>
 <p>Make sure you have tidyverse 1.3.0 installed.</p>
 <p>You are ready for the workshop!</p>
@@ -1656,7 +1656,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
