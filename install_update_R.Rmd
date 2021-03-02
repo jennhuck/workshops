@@ -1,0 +1,88 @@
+---
+title: "Install or Update R"
+author: "Jennifer Huck"
+date: "Spring 2021"
+output:
+  html_document:
+    toc: true
+    toc_float: 
+      collapsed: FALSE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# In advance of the workshop
+To participate in the workshop, please bring a laptop with R and RStudio installed.  We recommend that you have the latest version of R (4.0.4"Lost Library Book") and of the tidyverse package (1.3.0).  Additionally, you need to have RStudio installed, but it is less crucial that you are using the most recent version. 
+
+Follow these steps to make sure you have R properly installed in advance of the workshop.
+
+Do you already have R and RStudio installed? 
+
+* No - follow the instructions for ["I do not have R installed"](#noinstall)
+* Yes - follow the instructions for ["I have R installed"](#yesinstall)
+
+
+# "I do not have R installed" {#noinstall}
+You should install R, RStudio, and tidyverse. 
+
+## Installing R
+ 
+Windows:
+
+1. Go to <https://cloud.r-project.org/bin/windows/base/>
+2. Click the "Download R 4.0.4 for Windows" link.
+3. When the file finishes downloading, double-click to install. You should be able to just click "Next" to all dialogs to finish the installation.
+ 
+Mac:
+
+1. Go to <https://cloud.r-project.org/bin/macosx/>
+2. Click the link "R-4.0.4.pkg"
+3. When the file finishes downloading, double-click to install. You should be able to just click "Next" to all dialogs to finish the installation.
+ 
+## Installing RStudio 
+ 
+Download RStudio Desktop  <https://www.rstudio.com/products/rstudio/download/#download>.  When the file finishes downloading, double-click to install. You should be able to click "Next" to all dialogs to finish the installation.
+
+## Installing tidyverse {#installtidyverse}
+Open RStudio.  Go to Tools (at the top)...Install Packages.  Enter `tidyverse`, then select Install. 
+
+You are ready for the workshop!
+
+# "I have R installed" {#yesinstall}
+The workshops run more smoothly when everyone is using the same version of R and tidyverse. Please update R and tidyverse, if necessary (and less crucially, RStudio). 
+
+## Verify R version
+Open RStudio.  At the top of the Console you will see session info.  The first line tells you which version of R you are using.  If RStudio is already open and you’re deep in a session, type `R.version.string` to print out the R version.
+
+Do you have R version 4.0.4 "Lost Library Book" installed?
+
+* No - follow the instructions for ["Updating R"](#updateR) 
+* Yes - Great!  Do you have tidyverse installed?
+    + No or I don't know - See ["Installing tidyverse"](#installtidyverse)
+    + Yes - Great! In Rstudio, go to Tools > Check for Package Updates.  If there’s an update available for tidyverse, install it.  You want tidyverse version 1.3.0.
+
+## Updating R/RStudio/Tidyverse {#updateR}
+
+Windows:
+
+To update R on Windows, try using the package `installr` (only for Windows). This [installr tutorial](https://www.r-statistics.com/2015/06/a-step-by-step-screenshots-tutorial-for-upgrading-r-on-windows/) is very helpful.  
+
+Make sure you have tidyverse 1.3.0 installed.  Got to Tools (at the top)...Check for package updates.  If tidyverse shows up on the list, select it, then click "Install Updates."
+
+You are ready for the workshop!
+
+Mac:
+
+On Mac, you can simply download and install the newest version of R. When you restart RStudio, it will use the updated version of R.
+
+1. Go to https://cloud.r-project.org/bin/macosx/ 
+2. Click the link "R-4.0.4.pkg"
+3. When the file finishes downloading, double-click to install. You should be able to click "Next" to all dialogs to finish the installation.
+4. From within RStudio, go to Help...Check for Updates to install newer version of RStudio (if available, optional).
+5. To update packages, go to Tools...Check for Package Updates. If updates are available, select All (or just tidyverse), and click Install Updates.
+
+Make sure you have tidyverse 1.3.0 installed.  Got to Tools (at the top)...Check for package updates.  If tidyverse shows up on the list, select it, then click "Install Updates."
+
+You are ready for the workshop!
