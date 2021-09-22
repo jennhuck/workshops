@@ -188,15 +188,19 @@ pre code {
 
 <h1 class="title toc-ignore">Reproducible Analysis and Documentation with R and RStudio</h1>
 <h4 class="author">Jennifer Huck</h4>
-<h4 class="date">Spring 2021</h4>
+<h4 class="date">Fall 2021</h4>
 
 </div>
 
 
 <div id="reproducible-analysis-and-documentation-with-r-and-rstudio" class="section level1">
 <h1>Reproducible Analysis and Documentation with R and RStudio</h1>
-<p>In this workshop we will focus primarily on two workflow tools. The first is using RStudio Projects and the ‘here’ package to create a project-oriented workflow in your R scripts. The second is using R Markdown for literate programming. We will briefly review R Markdown documents, which you can use to write complete papers. We will take a look at the new features in Visual R Markdown, such as citations and technical writing.</p>
-<p>This is the third of four sessions in our series “Reproducible Research for Early Graduate Students.” The remaining session is “Sharing Your Data for Transparent and Reproducible Research.”</p>
+<p>In this workshop we will focus primarily on two workflow tools. We will use:</p>
+<ol style="list-style-type: decimal">
+<li><p>RStudio Projects to create a project-oriented workflow in your R scripts, and</p></li>
+<li><p>R Markdown for literate programming. We will review R Markdown documents, which you can use to write complete papers. We will also look at the new features in Visual R Markdown, such as citations and technical writing.</p></li>
+</ol>
+<p>This is the third of four sessions in our series “Reproducible Research Practices: Make Your Research Life Easier.” The remaining session is “Sharing Your Data for Transparent and Reproducible Research.”</p>
 <p><a href="https://docs.google.com/presentation/d/e/2PACX-1vTrtP55Xi_4X66GJIcrOvnlpjFk38-JwigEyERNHxyhkE3V0FHOySr-kWkLmD2VJy-M3yNd_jVodpJw/pub?start=false&amp;loop=false&amp;delayms=3000">Teaching Slides</a> are available, and mirror the content in this document.</p>
 <div id="learning-objectives" class="section level2">
 <h2>Learning Objectives</h2>
@@ -204,14 +208,13 @@ pre code {
 <ul>
 <li>How to use RStudio Projects and why you would want to</li>
 <li>What R Markdown documents are and why you would want to use them</li>
-<li>How the here package can help with file paths once you start using R Markdown documents regularly</li>
 </ul>
-<p>This is not a complete workshop on how to use the many options provided within R Markdown documents.</p>
+<p>Note: This is not a complete workshop on how to use the many options provided within R Markdown documents. We will cover some details, but not all.</p>
 </div>
 <div id="get-ready" class="section level2">
 <h2>Get Ready!</h2>
 <ul>
-<li>Before the first session, make sure you have installed or updated R, RStudio, and the <code>here</code> package. <a href="https://uvastatlab.github.io/phdplus2021/installR">Installing and updating instructions are here</a>. When reviewing the instructions, substitute the <code>here</code> package whenever you see the <code>tidyverse</code> package.</li>
+<li>Before the first session, make sure you have installed or updated R and RStudio <a href="https://jennhuck.github.io/workshops/install_update_R.html">Installing and updating instructions are here</a>. For best participation results, make sure you have updated RStudio to 1.4.</li>
 <li>Visit my <a href="https://github.com/jennhuck/penguins/">GitHub Penguins repository</a> and download the repository. This repository contains files for a demo project. Click on the big green “Code” button, then “Download ZIP,” and save it somewhere that you can find on the day of the workshop and unzip the folder.</li>
 </ul>
 </div>
@@ -230,9 +233,9 @@ pre code {
 <h3>Organize work into projects</h3>
 <p>Aka “little p projects.”</p>
 <p>First, let’s make sure we set up our work into projects.</p>
-<p>Step 1: Organize your work into “projects.” That means all the files in a project are in a single directory, aka folder. Check out UVA Library’s workshop <a href="https://docs.google.com/presentation/d/e/2PACX-1vQZRUuJ_Xws8qww8Q2LHLL34DkP0K7FjKI3PoMT6KKz6S6HI9otYMuAqCwK55LbkC0WDyP2xlnutxD0/pub?start=false&amp;loop=false&amp;delayms=3000#slide=id.p">Organize Your Files and Metadata for Transparent and Reproducible Research</a> for more details.</p>
+<p>Step 1: Organize your work into “projects.” That means all the files in a project are in a single directory, aka folder. Check out UVA Library’s workshop <a href="https://docs.google.com/presentation/d/e/2PACX-1vQZRUuJ_Xws8qww8Q2LHLL34DkP0K7FjKI3PoMT6KKz6S6HI9otYMuAqCwK55LbkC0WDyP2xlnutxD0/pub?start=false&amp;loop=false&amp;delayms=3000#slide=id.p">Organize Your Files and Metadata for Transparent and Reproducible Research</a> for a detailed discussion of how to set up “little p projects.”</p>
 <p>Step 2: When working on a project, set your working directory to that project’s main directory. Be intentional about using that working directory. Use the tools that we will cover below, and avoid using <code>setwd()</code> and <em>absolute</em> paths</p>
-<p>Step 3: Be disciplined about using your files paths. The working directory is the main directory, and all other paths are <em>relative</em> to that directory.</p>
+<p>Step 3: Be disciplined about using relative file paths. The working directory is the main directory, and all other paths are <em>relative</em> to that directory.</p>
 </div>
 <div id="what-rstudio-projects-do-for-you" class="section level3">
 <h3>What RStudio Projects do for you</h3>
@@ -258,14 +261,15 @@ pre code {
 <div id="using-rstudio-projects" class="section level3">
 <h3>Using RStudio Projects</h3>
 <p>As an example, we will imagine you are working on two projects: <code>worms</code> and <code>penguins</code>.</p>
-<p>You can designate a new or existing folder as an RStudio Project. All that means is that RStudio leaves behind a file, e.g., <code>worms.Rproj</code>. This file stores specific settings for that project.</p>
-<p><strong>Your turn</strong></p>
-<p>In RStudio, use <em>File…New Project</em> or click on the R cube in the upper right to get started. Create a fresh project called <code>worms</code>.</p>
-<p>Once you do that, close RStudio. Now go to where you saved the <code>worms</code> project folder using Windows Explorer or Mac Finder. Double click on your <code>worms.rproj</code> file.</p>
-<p>Now, click on the little down arrow next to the R cube in the upper right, and open the <code>penguins</code> project you downloaded.</p>
-<p>Notice that you get a fresh environment when you switch back and forth.</p>
-<p>Using Windows Explorer or Mac Finder, go to where you saved your new <code>worms</code> project and double click on the <code>worms.rproj</code> file. It will launch your project, and you can run multiple instances of R at the same time. You should have both <code>worms</code> and <code>penguins</code> projects open at the same time. They are running in completely separate environments.</p>
+<p>You can designate a new or existing folder as an RStudio Project. All that means is that RStudio leaves behind a helper file, e.g., <code>worms.Rproj</code>. This file stores specific settings for that project.</p>
 </div>
+</div>
+<div id="your-turn-worms-project" class="section level2">
+<h2>Your turn (worms project)</h2>
+<p>In RStudio, use <em>File…New Project…New Directory</em> or click on the R cube in the upper right to get started. Create a fresh project called <code>worms</code>.</p>
+<p>Now click on the little down arrow next to the R cube in the upper right, click <em>Open Project</em>, and open the <code>penguins</code> project you downloaded.</p>
+<p>Notice that you get a fresh environment when you switch back and forth.</p>
+<p>Using Windows Explorer or Mac Finder, go to where you saved the <code>worms</code> project. Double click on the <code>worms.rproj</code> file. RStudio will launch your project, and you can run multiple instances of R at the same time. You should have both <code>worms</code> and <code>penguins</code> projects open at the same time, using two RStudio instances. They are running in completely separate environments.</p>
 </div>
 <div id="dynamic-documents-with-r-markdown" class="section level2">
 <h2>Dynamic Documents with R Markdown</h2>
@@ -287,11 +291,11 @@ pre code {
 <p>Visual markdown editing is available in RStudio v1.4 or higher. This brings some of the features and ease-of-use that GUIs provide, while still always maintaining the source code that is the .Rmd file (R Markdown file).</p>
 <p>To switch to visual editing, click on the compass <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAaCAYAAABLlle3AAAABHNCSVQICAgIfAhkiAAAAF96VFh0UmF3IHByb2ZpbGUgdHlwZSBBUFAxAAAImeNKT81LLcpMVigoyk/LzEnlUgADYxMuE0sTS6NEAwMDCwMIMDQwMDYEkkZAtjlUKNEABZgamFmaGZsZmgMxiM8FAEi2FMk61EMyAAACxUlEQVRIibWWTW8TVxSGn3NnxkDtcUiIcBoboiYiCEsFQqv+gHZRqVWX3fb3VWrVZZdddVUJFBopKQRRCdtYRKRINePYHt9zurDHMkjpTEzyruaer2fO3DtnBj5Q5fWdrz5qPPj6LDnuQ6EuoB6I1eCzqGhOsDCt0bgSVza/wMkKQBT7q2nYeMOgO7wY6MbG5YqufiuBrGUmEVmKSraZSq3N8NXg/9IXerxX/PKn4igDGPK34Z8jmINSeUk+z8sPF4GGIh9PgP7529afvwPEN+8ZuK1ArZaXv+hBMgDxTmcWH/iiyQt16kVeBmbLhLIV1+/6sTjF2S0MvPEyL3+hTvupHCAYhuCC26HIHQwBSALdvRBoNdD1DGJqfUVnp7Wq4bULgZrZNoCig7ed3V+S1uOfM3DmO1dotdFcwckqgI3tGaCATq/ByWq10Vw5V6jZ5UkngvVHw8PM3h8ND5HJqZ7FnBM0VNFNAMW6HD/pzTzHT3qKdQEmMafP4jNB4/V7m04kBPBp8BQgrt//Jr6x8928zYmE8fr4k3OBEgbbMDmxg+7D1qSCrALL0CwNug9bptYHIHC3TysjeZxpF8tnurn3pfa619n9NVvmd6pWeLydJi+i8+vcTidqlqqN6HsTF6hKO+k8+i3zxDd2fgDotYY/wv4IoFx/8KVz1hBT/287/SmzZyq0p5W1S1smLgBQ0qfvONVeA2/mC2cxJi6orF3aer9eoYEvEbcATElOOnuded/8XmU66ex1KvWdRBxlItsGDub9uZ2Wa3evA1cBDDlk+lnLkU1jEWRpWqM4VErMJlAiR4c54TMlcjSbUFIK33l9cqDNkjPZADC1F7TbJ0WhtNsn6rUF4MzfhGapIHR/7BFDRW00/qswMFPqD1BRjxjsjzNz3t+gRZVamCT2R/rP3vGZmclRMnLXX0QR47T3qpvZ/wPOvCJ5I2BM+AAAAABJRU5ErkJggg==" title="Visual Mode compass" alt="Visual Mode compass" /> in the upper right of the editor pane.</p>
 <p>One of the highlights of the new Visual Editor is how easy it is to insert citations with Zotero.</p>
-<p>References: <span class="citation">(<a href="#ref-grolemund" role="doc-biblioref">Grolemund, n.d.</a>)</span><span class="citation">(<a href="#ref-rstudio" role="doc-biblioref">RStudio, n.d.a</a>)</span><span class="citation">(<a href="#ref-rstudioa" role="doc-biblioref">RStudio, n.d.</a>)</span><span class="citation">(<a href="#ref-rstudiob" role="doc-biblioref">RStudio, n.d.b</a>)</span></p>
+<p>References: <span class="citation">(<a href="#ref-grolemund" role="doc-biblioref">Grolemund, n.d.</a>)</span><span class="citation">(<a href="#ref-rstudio" role="doc-biblioref">RStudio, n.d.a</a>)</span><span class="citation">(<a href="#ref-rstudioa" role="doc-biblioref">RStudio, n.d.b</a>)</span><span class="citation">(<a href="#ref-rstudiob" role="doc-biblioref">RStudio, n.d.c</a>)</span></p>
 </div>
 </div>
-<div id="here-package" class="section level2">
-<h2>here package</h2>
+<div id="bonus-here-package" class="section level2">
+<h2>Bonus: here package</h2>
 <p>The <code>here</code> package enables easy file referencing with project-oriented workflows. Paths are created relative to the top-level directory. It is most useful when you work with R Markdown documents a lot, as it smoothes out some of the idiosyncrasies of how R Markdown looks for files.</p>
 <p>The here package always points to the root directory, which is typically where we set the working directory with our RStudio Project.</p>
 <pre class="r"><code>here::i_am(&quot;repro_analysis_R_RStudio.Rmd&quot;)</code></pre>
@@ -300,41 +304,50 @@ pre code {
 </div>
 <div id="demo-for-r-markdown-and-the-here-package" class="section level2">
 <h2>Demo for R Markdown and the here package</h2>
-<p>We are going to use the <code>penguins</code> demo project to explore the <code>here</code> package and R Markdown documents simultaneously. <code>penguins</code> has the following structure:</p>
-<pre><code>## C:/Users/jah2ax.ESERVICES/Box Sync/_R/workshops/workshops_teaching/penguins
-## +-- analysis
+<p>We are going to use the <code>penguins</code> demo project to explore R Markdown documents. <code>penguins</code> has the following structure:</p>
+<pre><code>## C:/Users/jah2ax.ESERVICES/Documents/GitHub/penguins
+## +-- data
+## |   \-- empty.csv
+## +-- documents
 ## |   +-- apa.csl
 ## |   +-- references.bib
-## |   +-- report-fail.Rmd
-## |   \-- report-success.Rmd
-## +-- data
+## |   \-- report.Rmd
 ## +-- penguins.Rproj
-## +-- prepare
-## |   \-- penguins.R
-## \-- README.md</code></pre>
+## +-- README.md
+## \-- scripts
+##     \-- 01-penguins.R</code></pre>
 <p>Note that this implements the essential “little p” project structure, by separating content into clear subdirectories.</p>
 <p>Let’s take a look at the <code>penguins</code> project now. The instructions for downloading the project are in “Get Ready” section of this page. (Some of the penguins demo project is taken from the <code>here()</code> project <a href="https://github.com/jennhuck/here/tree/master/inst/demo-project">demo files</a>, specifically the file structure, and the sections related to <code>here</code>.)</p>
 </div>
 <div id="recommended-for-further-learning" class="section level2">
 <h2>Recommended for further learning</h2>
-<p>Reach out! <a href="mailto:statlab@virginia.edu">statlab@virginia.edu</a></p>
+<p>Reach out to our statistical consultants! <a href="mailto:statlab@virginia.edu">statlab@virginia.edu</a></p>
+<p>General Reproducible Research in R and RStudio:</p>
+<ul>
+<li>Gandrud, Christopher. <a href="http://proxy01.its.virginia.edu/login?url=https://www.taylorfrancis.com/books/9781315382548">Reproducible Research With R and RStudio</a>.</li>
+</ul>
 <p>RStudio Projects:</p>
 <ul>
-<li>Jennifer Bryan and Jim Hester. <em>What they Forgot to Teach about R</em>. <a href="https://rstats.wtf/project-oriented-workflow.html">Project Oriented Workflow</a> and <a href="https://rstats.wtf/safe-paths.html">Practice Safe Paths</a></li>
-<li>Hadley Wickham and Garrett Grolemund. <em>R for Data Science.</em> <a href="https://r4ds.had.co.nz/workflow-projects.html">Chapter 8: Workflow: projects.</a></li>
-</ul>
-<p>Here package:</p>
-<ul>
-<li>Malcolm Barrett. <a href="https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/">Why should I use the here package when I’m already using projects?</a></li>
-<li>Jenny Richmond. <a href="http://jenrichmond.rbind.io/post/how-to-use-the-here-package/">how to use the `here` package</a>.</li>
-<li>Kirill Müller and Jennifer Bryan. <em>Here package vignettes</em>: <a href="https://cran.r-project.org/web/packages/here/vignettes/here.html">here</a> and <a href="https://cran.r-project.org/web/packages/here/vignettes/rmarkdown.html">Using here with rmarkdown</a></li>
+<li>Jennifer Bryan and Jim Hester. <em>What they Forgot to Teach about R</em>. <a href="https://rstats.wtf/project-oriented-workflow.html">Project Oriented Workflow</a> and <a href="https://rstats.wtf/safe-paths.html">Practice Safe Paths</a>.</li>
+<li>Hadley Wickham and Garrett Grolemund. <em>R for Data Science.</em> <a href="https://r4ds.had.co.nz/workflow-projects.html">Chapter 8: Workflow: projects</a>.</li>
 </ul>
 <p>R Markdown:</p>
 <ul>
 <li>Yihui Xie, J. J. Allaire, Garrett Grolemund. <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a>.</li>
-<li>RStudio. <a href="https://rmarkdown.rstudio.com/lesson-1.html">R Markdown by RStudio: Introduction</a></li>
-<li>RStudio. <a href="https://rstudio.github.io/visual-markdown-editing/#/">Visual R Markdown.</a></li>
-<li>RStudio. <a href="https://rstudio.github.io/visual-markdown-editing/#/citations">Visual R Markdown: Citations.</a></li>
+<li>RStudio. <a href="https://rmarkdown.rstudio.com/lesson-1.html">R Markdown by RStudio: Introduction</a>.</li>
+<li>RStudio. <a href="https://rstudio.github.io/visual-markdown-editing/#/">Visual R Markdown</a>.</li>
+<li>RStudio. <a href="https://rstudio.github.io/visual-markdown-editing/#/citations">Visual R Markdown: Citations</a>.</li>
+</ul>
+<p>R Markdown Cheat Sheets:</p>
+<ul>
+<li>RStudio. <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown.pdf">R Markdown: Cheat Sheet</a>.</li>
+<li>RStudio. <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown: Reference Guide</a>.</li>
+</ul>
+<p>Bonus: <code>here</code> package:</p>
+<ul>
+<li>Malcolm Barrett. <a href="https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/">Why should I use the here package when I’m already using projects?</a></li>
+<li>Jenny Richmond. <a href="http://jenrichmond.rbind.io/post/how-to-use-the-here-package/">how to use the `here` package</a>.</li>
+<li>Kirill Müller and Jennifer Bryan. <em>Here package vignettes</em>: <a href="https://cran.r-project.org/web/packages/here/vignettes/here.html">here</a> and <a href="https://cran.r-project.org/web/packages/here/vignettes/rmarkdown.html">Using here with R Markdown</a>.</li>
 </ul>
 </div>
 <div id="references" class="section level2 unnumbered">
@@ -365,10 +378,10 @@ Richmond, Jenny. n.d. <span>“How to Use the ‘Here‘ Package.”</span> http
 RStudio. n.d.a. <span>“R <span>Markdown</span>: <span>Introduction</span>.”</span> https://rmarkdown.rstudio.com/lesson-1.html.
 </div>
 <div id="ref-rstudioa" class="csl-entry">
-RStudio. n.d. <span>“Visual <span>R Markdown</span>.”</span> https://rstudio.github.io/visual-markdown-editing/#/.
+RStudio. n.d.b. <span>“Visual <span>R Markdown</span>.”</span> https://rstudio.github.io/visual-markdown-editing/#/.
 </div>
 <div id="ref-rstudiob" class="csl-entry">
-RStudio. n.d.b. <span>“Visual <span>R Markdown</span>: <span>Citations</span>.”</span> https://rstudio.github.io/visual-markdown-editing/#/citations.
+RStudio. n.d.c. <span>“Visual <span>R Markdown</span>: <span>Citations</span>.”</span> https://rstudio.github.io/visual-markdown-editing/#/citations.
 </div>
 <div id="ref-wickham" class="csl-entry">
 Wickham, Hadley, and Garrett Grolemund. n.d. <span>“8 <span>Workflow</span>: Projects.”</span> In <em>R for <span>Data Science</span></em>.
