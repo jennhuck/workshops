@@ -1,0 +1,197 @@
+---
+title: "Reproducible Analysis and Documentation with R and RStudio"
+author: "Jennifer Huck"
+date: "Fall 2021"
+output:
+  html_document:
+    toc: FALSE
+    toc_float:
+      collapsed: no
+  pdf_document:
+    toc: yes
+bibliography: repro_analysis_R_RStudio.bib
+link-citations: true
+---
+
+```{r setup, include=FALSE}
+here::i_am("website/repro_analysis_R_RStudio.Rmd")
+library(here)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Reproducible Analysis and Documentation with R and RStudio
+
+In this workshop we will focus primarily on two workflow tools. We will use:
+
+1.  RStudio Projects to create a project-oriented workflow in your R scripts, and
+
+2.  R Markdown for literate programming. We will review R Markdown documents, which you can use to write complete papers. We will also look at the new features in Visual R Markdown, such as citations and technical writing.
+
+This is the third of four sessions in our series "Reproducible Research Practices: Make Your Research Life Easier." The remaining session is "Sharing Your Data for Transparent and Reproducible Research."
+
+[Teaching Slides](https://docs.google.com/presentation/d/e/2PACX-1vTrtP55Xi_4X66GJIcrOvnlpjFk38-JwigEyERNHxyhkE3V0FHOySr-kWkLmD2VJy-M3yNd_jVodpJw/pub?start=false&loop=false&delayms=3000) are available, and mirror the content in this document.
+
+## Learning Objectives
+
+In this workshop, you will learn:
+
+-   How to use RStudio Projects and why you would want to
+-   What R Markdown documents are and why you would want to use them
+
+Note: This is not a complete workshop on how to use the many options provided within R Markdown documents.  We will cover some details, but not all. 
+
+## Get Ready!
+
+-   Before the first session, make sure you have installed or updated R and RStudio [Installing and updating instructions are here](https://jennhuck.github.io/workshops/install_update_R.html).  For best participation results, make sure you have updated RStudio to 1.4.
+-   Visit my [GitHub Penguins repository](https://github.com/jennhuck/penguins/) and download the repository. This repository contains files for a demo project. Click on the big green "Code" button, then "Download ZIP," and save it somewhere that you can find on the day of the workshop and unzip the folder.
+
+## Project-oriented workflow with RStudio Projects
+
+### What not to do: setwd() and rm(list = ls())
+
+The working directory is the place that R looks for your files. There is always one set. You can check with `getwd()`.
+
+A lot of R scripts start off like this:
+
+`setwd("C:/Users/jah2ax.ESERVICES/Box Sync/_R/research/penguins")`
+
+It uses the `setwd()` function to set the working directory. The problem with this is that there is a 0% chance that this will work on someone else's computer, and will very likely break on your computer if (and when) you move your directory around. `setwd()` is fragile - it breaks! If you actually want this to work on someone else's computer - like an advisor or a collaborator - then that line of code is not going to do it's job (i.e., set the working directory to the proper folder) because the path won't be any good on the other person's computer. Same is true if you move your files around. This is annoying for everyone!
+
+Similarly, you may have seen this line, often at the top of scripts: `rm(list = ls())`. That line is good at removing objects from your environment, but doesn't give your a fresh R process, specifically, `rm(list = ls())` does not detach libraries. There is a better way!
+
+References: [@bryan][@bryana][@wickham]
+
+### Organize work into projects
+
+Aka "little p projects."
+
+First, let's make sure we set up our work into projects.
+
+Step 1: Organize your work into "projects." That means all the files in a project are in a single directory, aka folder. Check out UVA Library's workshop [Organize Your Files and Metadata for Transparent and Reproducible Research](https://docs.google.com/presentation/d/e/2PACX-1vQZRUuJ_Xws8qww8Q2LHLL34DkP0K7FjKI3PoMT6KKz6S6HI9otYMuAqCwK55LbkC0WDyP2xlnutxD0/pub?start=false&loop=false&delayms=3000#slide=id.p) for a detailed discussion of how to set up "little p projects."
+
+Step 2: When working on a project, set your working directory to that project's main directory. Be intentional about using that working directory. Use the tools that we will cover below, and avoid using `setwd()` and *absolute* paths
+
+Step 3: Be disciplined about using relative file paths. The working directory is the main directory, and all other paths are *relative* to that directory.
+
+### What RStudio Projects do for you
+
+Aka "capital P Projects."
+
+RStudio can help you solve all of these problems with RStudio Projects. When you launch an RStudio Project, RStudio will:
+
+-   Launch R/RStudio.
+-   Set the working directory to the project's folder.
+-   Provide you with a fresh environment. That means there are no libraries loaded and no objects saved in your environment.
+
+This solves the problems posed by both `setwd()` and `rm(list = ls())`!
+
+Let's say you are working on one project, and you want to switch to another project. When you want to open a new Project, RStudio will:
+
+-   Restart R.
+-   Set the working directory again.
+
+If you want to run multiple projects at the same time, you can do that!
+
+-   Each project gets its own R process (environment), and the working directory is set correctly in each.
+-   Bonus: multiple projects feel like multiple instances of R and you can use whatever mode you like to switch between them, e.g. <kbd>Command</kbd>+<kbd>Tab</kbd> (Mac OS) or <kbd>Alt</kbd>+<kbd>Tab</kbd> (Windows)
+
+### Using RStudio Projects
+
+As an example, we will imagine you are working on two projects: `worms` and `penguins`.
+
+You can designate a new or existing folder as an RStudio Project. All that means is that RStudio leaves behind a helper file, e.g., `worms.Rproj`. This file stores specific settings for that project.
+
+## Your turn (worms project)
+
+In RStudio, use *File...New Project...New Directory* or click on the R cube in the upper right to get started. Create a fresh project called `worms`.
+
+Now click on the little down arrow next to the R cube in the upper right, click *Open Project*, and open the `penguins` project you downloaded.
+
+Notice that you get a fresh environment when you switch back and forth.
+
+Using Windows Explorer or Mac Finder, go to where you saved the `worms` project.  Double click on the `worms.rproj` file. RStudio will launch your project, and you can run multiple instances of R at the same time. You should have both `worms` and `penguins` projects open at the same time, using two RStudio instances. They are running in completely separate environments.
+
+## Dynamic Documents with R Markdown
+
+You might be used to cutting tables or plots from your statistical package, and pasting them into a Word document. Now, imagine that your advisor suggests you make changes to your analysis. Did you remember to update the table correctly in Word? What code generated that table in the first place?
+
+Manual copy-and-paste is a huge opportunity for errors and confusion. It's super tedious and no one wants to spend their time doing it or figuring out what code made what table. R Markdown solves that problem for you. R Markdown allows you to embed R code into narrative text, and then format that text into PDF, HTML, Word, and so on. Now when you need to make changes, you can make changes directly to the code embedded in the R Markdown document. No more cutting and pasting! This is better for reproducibility and transparency, and more simply, makes your life easier.
+
+As noted in [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/), with R Markdown, you can:
+
+-   Compile a single R Markdown document to a report in different formats, such as PDF, HTML, or Word.
+-   Create notebooks in which you can directly run code chunks interactively.
+-   Make slides for presentations (HTML5, LaTeX Beamer, or PowerPoint).
+-   Produce dashboards with flexible, interactive, and attractive layouts.
+-   Build interactive applications based on Shiny.
+-   Write journal articles.
+-   Author books of multiple chapters.
+-   Generate websites and blogs.
+
+### Visual Editor
+
+Visual markdown editing is available in RStudio v1.4 or higher. This brings some of the features and ease-of-use that GUIs provide, while still always maintaining the source code that is the .Rmd file (R Markdown file).
+
+To switch to visual editing, click on the compass ![Visual Mode compass](images/visual_mode_2x.png "Visual Mode compass") in the upper right of the editor pane.
+
+One of the highlights of the new Visual Editor is how easy it is to insert citations with Zotero.
+
+References: [@grolemund][@rstudio][@rstudioa][@rstudiob]
+
+## Bonus: here package
+
+The `here` package enables easy file referencing with project-oriented workflows. Paths are created relative to the top-level directory. It is most useful when you work with R Markdown documents a lot, as it smoothes out some of the idiosyncrasies of how R Markdown looks for files.
+
+The here package always points to the root directory, which is typically where we set the working directory with our RStudio Project.
+
+```{r here}
+here::i_am("repro_analysis_R_RStudio.Rmd")
+```
+
+References: [@barrett2018][@richmond][@muller][@mullera]
+
+## Demo for R Markdown and the here package
+
+We are going to use the `penguins` demo project to explore R Markdown documents.  `penguins` has the following structure:
+
+```{r tree, echo = FALSE}
+fs::dir_tree("C:/Users/jah2ax.ESERVICES/Documents/GitHub/penguins")
+```
+
+Note that this implements the essential "little p" project structure, by separating content into clear subdirectories.
+
+Let's take a look at the `penguins` project now. The instructions for downloading the project are in "Get Ready" section of this page. (Some of the penguins demo project is taken from the `here()` project [demo files](https://github.com/jennhuck/here/tree/master/inst/demo-project), specifically the file structure, and the sections related to `here`.)
+
+## Recommended for further learning
+
+Reach out to our statistical consultants! [statlab\@virginia.edu](mailto:statlab@virginia.edu)
+
+General Reproducible Research in R and RStudio:
+
+-   Gandrud, Christopher. [Reproducible Research With R and RStudio](http://proxy01.its.virginia.edu/login?url=https://www.taylorfrancis.com/books/9781315382548).
+
+RStudio Projects:
+
+-   Jennifer Bryan and Jim Hester. *What they Forgot to Teach about R*. [Project Oriented Workflow](https://rstats.wtf/project-oriented-workflow.html) and [Practice Safe Paths](https://rstats.wtf/safe-paths.html).
+-   Hadley Wickham and Garrett Grolemund. *R for Data Science.* [Chapter 8: Workflow: projects](https://r4ds.had.co.nz/workflow-projects.html).
+
+R Markdown:
+
+-   Yihui Xie, J. J. Allaire, Garrett Grolemund. [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/).
+-   RStudio. [R Markdown by RStudio: Introduction](https://rmarkdown.rstudio.com/lesson-1.html).
+-   RStudio. [Visual R Markdown](https://rstudio.github.io/visual-markdown-editing/#/).
+-   RStudio. [Visual R Markdown: Citations](https://rstudio.github.io/visual-markdown-editing/#/citations).
+
+R Markdown Cheat Sheets:
+
+-   RStudio. [R Markdown: Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown.pdf).
+-   RStudio. [R Markdown: Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
+
+Bonus: `here` package:
+
+-   Malcolm Barrett. [Why should I use the here package when I'm already using projects?](https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/)
+-   Jenny Richmond. [how to use the \`here\` package](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/).
+-   Kirill Müller and Jennifer Bryan. *Here package vignettes*: [here](https://cran.r-project.org/web/packages/here/vignettes/here.html) and [Using here with R Markdown](https://cran.r-project.org/web/packages/here/vignettes/rmarkdown.html).
+
+## References
